@@ -4,11 +4,11 @@
 <h1>Login</h1>
 <a href="{{ route('register') }}">Daftar</a>
 <br>
-<form action="{{ route ('authenticate') }}" method="post">
+<form action="{{ route('authenticate') }}" method="post">
     @csrf
     <label>Email</label>
     <br>
-    <input type="email" name="email" id="email" value=" {{old ('email') }}">
+    <input type="email" name="email" id="email" value=" {{old('email') }}">
     <br>
     <label>Password</label>
     <br>

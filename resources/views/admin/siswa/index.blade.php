@@ -56,22 +56,22 @@
             @else
             <td>Tidak Aktif</td>
             @endif
-                    <td>
-                    <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('siswa.destroy', $siswa->id) }}" method="POST">
+            <td>
+                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('siswa.destroy', $siswa->id) }}" method="POST">
                     <a href="{{ route('siswa.show', $siswa->id) }}" class="btn btn-sm btn-dark">SHOW</a>
                     <a href="{{ route('siswa.edit', $siswa->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit">HAPUS</button>
-                        </form>
-                    </td>
+                </form>
+            </td>
         </tr>
         @empty
         <tr>
             <td>
                 <p>data tidak ditemukan</p>
             </td>
-            <td>
+            <td>x`
                 <a href="{{ route('siswa.index') }}">Kembali</a>
             </td>
         </tr>

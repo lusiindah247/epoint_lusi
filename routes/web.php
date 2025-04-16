@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\PelanggaranController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -16,7 +18,11 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth','admin')->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin/dashboard');
+    Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin/dashboard');
     Route::resource('/admin/siswa', SiswaController::class);
+    Route::resource('/admin/akun', LoginRegisterController::class);
+    Route::put('/updateEmail/{akun}', [LoginRegisterController::class, 'updateEmail'])->name('updateEmail');
+    Route::put('/updatePassword/{akun}', [LoginRegisterController::class, 'updatePassword'])->name('updatePassword');
+    Route::resource('/admin/pelanggaran', PelanggaranController::class);
     Route::post('/logout', [LoginRegisterController::class, 'logout'])->name('logout');
 });
